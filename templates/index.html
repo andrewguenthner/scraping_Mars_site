@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/../static/style.css">
+    <title>The One and Only (at least, among pages by Anderw Guenthner) Mars Data Page</title>
+  </head>
+
+<body>
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Hint</strong> Hit "Blast Off!" to start your mission with the latest Mars updates.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div clas="container-fluid">
+    <div class="jumbotron text-center" id="hero1">
+      <h1 class="text-white">Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Blast Off!</a></p>
+    </div>
+  <div class="container-fluid border border-info">
+    <!-- news headline -->
+    <h3>Latest Mars News!</h3>
+    <hr>
+    <h5>{{pagedata.mars_news.news_title}}</h5>
+    <p></p>
+    </p>{{pagedata.mars_news.news_blob}}</p>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <h3>Featured Mars Image</h3>
+              <hr>
+              <img src={{pagedata.mars_featured_image.featured_img_url}} 
+              alt="Mars featured image" class="w-100">
+          </div>
+          <div class="col-md-4">
+              <div class="card">
+                    <img class="card-img-top" src="https://mars.nasa.gov/system/resources/detail_files/22401_PIA23136-cropped-100w.jpg" alt="Card image cap">
+                    <div class="card-body mt-md-2">
+                        <h5 class="card-title">Mars Weather Tweet</h5>
+                        <p class="card-text">{{pagedata.mars_weather.weather_tweet}}</p>
+              </div>
+              <div class="card">
+                    <div class="card-body mt-md-2">
+                        <h5 class="card-title">Mars Facts</h5>
+                        <p class="card-text">
+                            {{pagedata.mars_facts.fact_table | safe}}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <p></p>
+      {% for item in pagedata.mars_hemispheres.image_list %}
+      <div class="col-6 mt-md-3">
+          <div class="card">
+                <img class="card-img-top" src={{item.img_url}} alt="hemisphere image">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                </div>
+          </div>
+      </div>
+      {% endfor %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
